@@ -21,7 +21,7 @@ fun AppNavigation(navController: NavHostController) {
         }
 
         composable(route = AppScreen.Signup.route) {
-            SignUpScreen()
+            SignUpScreen(navController)
         }
     }
 

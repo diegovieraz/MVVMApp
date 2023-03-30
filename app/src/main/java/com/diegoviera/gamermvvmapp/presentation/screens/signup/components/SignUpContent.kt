@@ -1,4 +1,4 @@
-package com.diegoviera.gamermvvmapp.presentation.screens.login.components
+package com.diegoviera.gamermvvmapp.presentation.screens.signup.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -7,6 +7,8 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Lock
+import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.outlined.Lock
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.*
@@ -27,7 +29,7 @@ import com.diegoviera.gamermvvmapp.presentation.ui.theme.GamerMVVMAppTheme
 import com.diegoviera.gamermvvmapp.presentation.ui.theme.Red500
 
 @Composable
-fun LoginContent(){
+fun SignUpContent(){
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -42,20 +44,18 @@ fun BoxHeader(){
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .height(280.dp)
+            .height(230.dp)
             .background(Red500)
     ) {
         Column(
             modifier = Modifier.fillMaxWidth(),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
+            Spacer(modifier = Modifier.height(30.dp))
             Image(
-                modifier = Modifier.height(130.dp),
-                painter = painterResource(id = R.drawable.control),
-                contentDescription = "Control de Xbox 360"
-            )
-            Text(
-                text = "FIREBASE MVVM"
+                modifier = Modifier.height(100.dp),
+                painter = painterResource(id = R.drawable.user),
+                contentDescription = "Imagen de Usuario"
             )
         }
     }
@@ -63,6 +63,10 @@ fun BoxHeader(){
 
 @Composable
 fun CardForm(){
+
+    var username by remember {
+        mutableStateOf("")
+    }
 
     var email by remember {
         mutableStateOf("")
@@ -72,8 +76,12 @@ fun CardForm(){
         mutableStateOf("")
     }
 
+    var confirmPassword by remember {
+        mutableStateOf("")
+    }
+
     Card(
-        modifier = Modifier.padding(start = 40.dp, end = 40.dp, top = 200.dp),
+        modifier = Modifier.padding(start = 40.dp, end = 40.dp, top = 170.dp),
         backgroundColor = Darkgray500
     ) {
         Column(
@@ -82,18 +90,25 @@ fun CardForm(){
             Text(
                 modifier = Modifier
                     .padding(top = 40.dp),
-                text = "LOGIN",
+                text = "REGISTRO",
                 fontSize = 18.sp,
                 fontWeight = FontWeight.Bold
             )
             Spacer(modifier = Modifier.height(10.dp))
             Text(
-                text = "Por favor, inicia sesión para continuar",
+                text = "Por favor, ingresa estos datos para continuar.",
                 fontSize = 12.sp,
                 color = Color.Gray
             )
             DefaultTextField(
                 modifier = Modifier.padding(top = 25.dp),
+                value = username,
+                onValueChange = { username = it },
+                label = "Nombre de usuario",
+                icon = Icons.Default.Person
+            )
+            DefaultTextField(
+                modifier = Modifier.padding(top = 5.dp),
                 value = email,
                 onValueChange = { email = it },
                 label = "Correo electrónico",
@@ -108,11 +123,19 @@ fun CardForm(){
                 icon = Icons.Default.Lock,
                 hideText = true
             )
+            DefaultTextField(
+                modifier = Modifier.padding(top = 5.dp),
+                value = confirmPassword,
+                onValueChange = { confirmPassword = it },
+                label = "Confirmar contraseña",
+                icon = Icons.Outlined.Lock,
+                hideText = true
+            )
             DefaultButton(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(vertical = 40.dp),
-                text = "INICIAR SESIÓN",
+                    .padding(vertical = 15.dp),
+                text = "REGISTRARSE",
                 onClick = {  }
             )
         }
@@ -121,14 +144,14 @@ fun CardForm(){
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun DefaultPreview() {
+fun PreviewSignUpContent() {
     GamerMVVMAppTheme(darkTheme = true) {
         // A surface container using the 'background' color from the theme
         Surface(
             modifier = Modifier.fillMaxSize(),
             color = MaterialTheme.colors.background
         ) {
-            LoginContent()
+            SignUpContent()
         }
     }
 }
