@@ -11,7 +11,9 @@ import androidx.navigation.compose.rememberNavController
 import com.diegoviera.gamermvvmapp.presentation.navigation.AppNavigation
 import com.diegoviera.gamermvvmapp.presentation.screens.login.LoginScreen
 import com.diegoviera.gamermvvmapp.presentation.ui.theme.GamerMVVMAppTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
     private lateinit var navController: NavHostController

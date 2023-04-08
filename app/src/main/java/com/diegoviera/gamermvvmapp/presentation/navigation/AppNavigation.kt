@@ -7,6 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.diegoviera.gamermvvmapp.presentation.screens.login.LoginScreen
+import com.diegoviera.gamermvvmapp.presentation.screens.profile.ProfileScreen
 import com.diegoviera.gamermvvmapp.presentation.screens.signup.SignUpScreen
 
 @Composable
@@ -22,6 +23,10 @@ fun AppNavigation(navController: NavHostController) {
 
         composable(route = AppScreen.Signup.route) {
             SignUpScreen(navController)
+        }
+
+        composable(route = AppScreen.Profile.route) {
+            ProfileScreen(navController)
         }
     }
 

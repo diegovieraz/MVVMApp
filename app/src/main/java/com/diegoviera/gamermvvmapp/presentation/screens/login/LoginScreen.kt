@@ -16,10 +16,11 @@ import com.diegoviera.gamermvvmapp.presentation.ui.theme.GamerMVVMAppTheme
 @Composable
 fun LoginScreen(navController: NavHostController) {
 
+
     Scaffold(
         topBar = {},
         content = {
-                  LoginContent()
+                  LoginContent(navController)
                 },
         bottomBar = {
             LoginBottomBar(navController)
